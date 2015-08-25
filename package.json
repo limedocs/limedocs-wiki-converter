@@ -1,0 +1,11 @@
+{
+  "name": "github-wiki-converter",
+  "version": "1.0.0",
+  "description": "Generate HTML & PDF documentaton from you Github wiki",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthias ETIENNE <matthias@etienne.in> (https://github.com/mattallty)",
+  "license": "MIT"
+}
