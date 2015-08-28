@@ -1,0 +1,1 @@
+module.exports = require('./src/limedocs-wiki-converter')

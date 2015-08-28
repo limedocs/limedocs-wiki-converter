@@ -1,11 +1,62 @@
 {
-  "name": "github-wiki-converter",
-  "version": "1.0.0",
-  "description": "Generate HTML & PDF documentaton from you Github wiki",
+  "name": "limedocs-wiki-converter",
+  "version": "0.1.0",
+  "description": "Generate HTML & PDF documentation from you Github wiki or any other markdown-based wiki",
+  "keywords": [
+    "wiki",
+    "wiki converter",
+    "wiki convert",
+    "wiki2html",
+    "md2html",
+    "markdown2html",
+    "github2html",
+    "github wiki to html",
+    "wiki to html",
+    "md to html",
+    "markdown to html",
+    "github to html",
+    "github wiki to html",
+    "wiki2pdf",
+    "md2pdf",
+    "markdown2pdf",
+    "github2pdf",
+    "github wiki to pdf",
+    "wiki to pdf",
+    "md to pdf",
+    "markdown to pdf",
+    "github to pdf",
+    "github wiki to pdf"
+  ],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --harmony --harmony_arrow_functions --recursive test/unit",
+    "build": "rm -rf dist/* && ./node_modules/.bin/babel src --out-dir dist --source-maps"
+  },
+  "bin": {
+    "gwc": "dist/cli/cli.js"
   },
   "author": "Matthias ETIENNE <matthias@etienne.in> (https://github.com/mattallty)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "bootstrap": "^3.3.5",
+    "commander": "^2.8.1",
+    "datauri": "^0.7.1",
+    "defaults": "^1.0.2",
+    "fs-extra": "^0.23.1",
+    "highlight.js": "^8.7.0",
+    "jquery": "^2.1.4",
+    "marked": "^0.3.5",
+    "node-dir": "^0.1.9",
+    "open": "0.0.5",
+    "winston": "^1.0.1",
+    "wkhtmltopdf": "^0.1.5"
+  },
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-core": "^5.8.23",
+    "eslint": "^1.2.1",
+    "mocha": "^2.2.5",
+    "should": "^7.0.4"
+  }
 }
