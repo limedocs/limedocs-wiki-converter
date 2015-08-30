@@ -21,21 +21,18 @@ class Cli {
       .option("--toc <toc-file>", "Wiki TOC file")
       .option("--toc-level <level>", "Table of contents deep level [default: 3]", 4)
 
-      .option("--header <file>", "Header file to use for each page")
-      .option("--footer <file>", "Footer file to use for each page")
-
       .option("--highlight-theme <theme>", "Highlighter theme [default: darkula]", 'darkula')
 
       .option("--css <css-file>", "Additional CSS file")
       .option("-v --verbose", "Verbose mode")
-
+/*
       .on('--help', function () {
         console.log('  Examples:')
         console.log()
-        console.log('    $ gwc /path/to/my/wiki')
-        console.log('    $ gwc --title "My doc" -output /another/dir /path/to/my/wiki')
+        console.log('    $ ld-convert /path/to/my/wiki')
+        console.log('    $ ld-convert --title "My doc" -output /another/dir /path/to/my/wiki')
         console.log()
-      })
+      })*/
   }
 
   run() {
@@ -50,8 +47,6 @@ class Cli {
       title: this.program.title,
       tocFile: this.program.toc,
       tocLevel: this.program.tocLevel,
-      headerFile: this.program.header,
-      footerFile: this.program.footer,
       highlightTheme: this.program.highlightTheme,
       userCssFile: this.program.css,
       verbose: this.program.verbose || false,
