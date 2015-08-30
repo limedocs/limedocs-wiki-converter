@@ -1,6 +1,10 @@
 "use strict"
 
-const GWC = require('../../')
+var fixtures = require('../fixtures')
+
+console.log(fixtures)
+
+const Ld = require('../../')
     , path = require('path')
 
 require('should')
@@ -16,7 +20,7 @@ describe('[GWC test-suite]', function() {
   describe('gwc = new GWC()', function() {
     it('should throw a TypeError when passing no argument', function () {
       (function() {
-        new GWC()
+        new Ld()
       }).should.throw()
     })
   })
@@ -24,15 +28,15 @@ describe('[GWC test-suite]', function() {
   describe('gwc = new GWC("/this/does/not/exists")', function() {
     it('should throw a TypeError when passing an invalid directory path', function () {
       (function() {
-        new GWC('/this/does/not/exists')
+        new Ld('/this/does/not/exists')
       }).should.throw()
     })
   })
 
   describe('gwc = new GWC("<valid-path>")', function() {
     it('should return a GWC instance', function () {
-      var g = new GWC(samples[0])
-      g.should.be.instanceOf(GWC)
+      var g = new Ld(samples[0])
+      g.should.be.instanceOf(Ld)
     })
   })
 

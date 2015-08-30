@@ -1,0 +1,9 @@
+var fixtures = require('require-dir')('../../src/', {recursive : true})
+exports.BaseWriter = fixtures['base-writer']
+exports.Finder = fixtures.finder
+exports.Helpers = fixtures.helpers
+exports.Ld = fixtures['limedocs-wiki-converter']
+exports.PdfWriter = fixtures['pdf-writer']
+exports.HtmlWriter = fixtures['html-writer']
+exports.Markdown = fixtures.markdown
+exports.Toc = fixtures.toc

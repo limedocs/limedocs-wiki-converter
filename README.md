@@ -1,4 +1,6 @@
-# github-wiki-converter
+![Limedocs wiki converter](assets/images/Limedocs-wc.png)
+
+# Limedocs Wiki Converter
 
 > Generate HTML &amp; PDF documentation from you Github wiki
 
