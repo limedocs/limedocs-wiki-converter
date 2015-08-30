@@ -6,8 +6,8 @@ Limedocs Wiki Converter allows you to generate HTML & PDF documentation from you
 
 # Prerequesites
 
-- Node.js or io.js
-- wkhtmltopdf (for pdf generation)
+- [Node.js](https://nodejs.org/) or [io.js](https://iojs.org/en/index.html)
+- [wkhtmltopdf](http://wkhtmltopdf.org/downloads.html) (only necessary for pdf output format)
 
 # Installation
 
