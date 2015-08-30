@@ -60,4 +60,4 @@ if (require.main === module) {
 }
 
 module.exports = Cli;
-//# sourceMappingURL=cli.js.map
+//# sourceMappingURL=ld-convert.js.map
