@@ -40,7 +40,7 @@ ld-convert ./imedocs-wiki-converter.wiki
     -f, --format <format>        Format to convert to. Either html, pdf, or all [default: html]
     -o, --output <output-dir>    Output dir [default: './']
     -t, --title <title>          Wiki title [default: Documentation]
-    -d, --disable-inline-assets  Disable inlining of css & js in html document
+    -d, --disable-inline-assets  Disable inlining of images, css and js in html document
     --toc <toc-file>             Wiki TOC file
     --toc-level <level>          Table of contents deep level [default: 3]
     --highlight-theme <theme>    Highlighter theme [default: darkula]
@@ -49,12 +49,25 @@ ld-convert ./imedocs-wiki-converter.wiki
 ```
 
 
+# Formats
 
+## HTML
 
-## Table of contents
+### Pages to be included in the documentation
+
+### Inlining
+
+By default, the HTML output format will generate a single-page HTML document of you wiki, with all assets inlined, such
+as images, css, and javascript. So all you need to transfer documentation (to a collegue for example) is to send him/her
+this unique file.
+
+You can disable this inlining feature by passing `--disable-inline-assets` (or `-d`) such as serveral files will be 
+generated for each of images, css and javascript files. 
+
+### Table of contents
 
 By default, GWC will check for the following files to use as a table of contents (TOC):
 
 - `_Toc.md`
-- `_Sidebar.md`
+- `_Sidebar.md` (which is the default sidebar file on Github wikis)
  
