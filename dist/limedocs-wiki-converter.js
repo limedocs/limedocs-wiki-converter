@@ -158,8 +158,6 @@ var LimedocsWikiConverter = (function () {
         output: path.resolve('./'),
         tocFile: GWCFinder.searchForFile(['_Toc.html', '_Sidebar.html', '_Toc.md', '_Sidebar.md'], this.wikiPath),
         tocLevel: 3, // between 1 and 4
-        headerFile: GWCFinder.searchForFile(['_Header.html', '_Header.md'], this.wikiPath) || path.join(this.htmlPath, 'header.html'),
-        footerFile: GWCFinder.searchForFile(['_Footer.html', '_Footer.md'], this.wikiPath),
         highlightTheme: 'darkula',
         userCssFile: null
       };
@@ -213,21 +211,6 @@ var LimedocsWikiConverter = (function () {
     key: "getTocFile",
     value: function getTocFile() {
       return this.getOption('tocFile');
-    }
-  }, {
-    key: "setHeader",
-    value: function setHeader(file) {
-      return this.setOption('headerFile', path);
-    }
-  }, {
-    key: "setFooter",
-    value: function setFooter(file) {
-      return this.setOption('footerFile', path);
-    }
-  }, {
-    key: "setTitle",
-    value: function setTitle(title) {
-      return this.setOption('title', path);
     }
   }, {
     key: "addCssFile",

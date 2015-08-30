@@ -152,8 +152,6 @@ class LimedocsWikiConverter {
       output : path.resolve('./'),
       tocFile : GWCFinder.searchForFile(['_Toc.html', '_Sidebar.html', '_Toc.md', '_Sidebar.md'], this.wikiPath),
       tocLevel : 3, // between 1 and 4
-      headerFile : GWCFinder.searchForFile(['_Header.html', '_Header.md'], this.wikiPath) || path.join(this.htmlPath, 'header.html'),
-      footerFile : GWCFinder.searchForFile(['_Footer.html', '_Footer.md'], this.wikiPath),
       highlightTheme : 'darkula',
       userCssFile : null
     }
@@ -203,18 +201,6 @@ class LimedocsWikiConverter {
     return this.getOption('tocFile')
   }
 
-  setHeader(file) {
-    return this.setOption('headerFile', path)
-  }
-
-  setFooter(file) {
-    return this.setOption('footerFile', path)
-  }
-
-  setTitle(title) {
-    return this.setOption('title', path)
-  }
-
   addCssFile(file) {
     this.cssFiles.push(path.resolve(file))
     return this
@@ -227,9 +213,6 @@ class LimedocsWikiConverter {
   getJsFiles() {
     return this.jsFiles
   }
-
-
-
 }
 
 Object.defineProperty(LimedocsWikiConverter, 'package', {
