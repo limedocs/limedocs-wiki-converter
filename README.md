@@ -2,7 +2,7 @@
 
 # Limedocs Wiki Converter
 
-> Generate HTML &amp; PDF documentation from you Github wiki
+> Generate HTML & PDF documentation from you Github wiki or any other markdown-based wiki
 
 ## Table of contents
 
