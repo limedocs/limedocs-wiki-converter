@@ -71,7 +71,26 @@ this unique file.
 You can disable this inlining feature by passing `--disable-inline-assets` (or `-d`) such as serveral files will be 
 generated for each of images, css and javascript files. 
 
-### Table of contents
+### Table of contents (TOC)
+
+The *TOC* is rendered using a fixed div in the HTML documentation. You can use `--toc-level` to prevent the *TOC* div
+to overlap the `body` element.
+
+## PDF
+
+### Rendering
+
+PDF rendering is done using `wkhtmltopdf` which should be available in your `PATH`.
+It simply renders (more or less) the HTML version of your doc in PDF.
+
+
+# Code highlighting
+
+Code highlighting is rendered using highlight.js.
+You can customize the theme used by using the `--highlight-theme` option. By default, `darkula` theme is used.
+
+
+
 
 
  
