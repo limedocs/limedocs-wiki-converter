@@ -8,7 +8,8 @@ var fs = require('fs-extra'),
     path = require('path'),
     util = require('util'),
     logger = require('./logger'),
-    Promise = require("bluebird");
+    Promise = require("bluebird"),
+    datauri = require('datauri');
 
 var BaseWriter = (function () {
 
@@ -56,6 +57,11 @@ var BaseWriter = (function () {
     key: 'getJsTags',
     value: function getJsTags() {
       return this.getAssetsTags(this.ld.getJsFiles(), 'js').join('\n');
+    }
+  }, {
+    key: 'getLimedocsGeneratedImgData',
+    value: function getLimedocsGeneratedImgData() {
+      return datauri(path.resolve(__dirname, '../assets/images/Limedocs-generated.png'));
     }
   }, {
     key: 'getExtraCss',

@@ -123,7 +123,7 @@ img {
 }
 
 .gwc-nav {
-    margin:0px;
+    margin:0;
 }
 
 .gwc-nav-inner > .gwc-nav, .gwc-nav-inner > .gwc-nav > li > .gwc-nav {
@@ -172,7 +172,6 @@ img {
 }
 
 .html-doc .gwc-nav li.active > a {
-    color:#333;
     color:darkred;
 }
 
@@ -218,4 +217,15 @@ img {
 code {
     color: darkgreen;
     background-color: #EDEDED;
+}
+
+a.ld-powered-link {
+    padding:0 !important;
+}
+
+.ld-powered-img {
+    width:120px;
+    height:40px;
+    margin:7px 0 0 0;
+    max-width:none;
 }

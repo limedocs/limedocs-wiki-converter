@@ -5,6 +5,7 @@ var fs = require('fs-extra')
   , util = require('util')
   , logger = require('./logger')
   , Promise = require("bluebird")
+  , datauri = require('datauri')
 
 class BaseWriter {
 
@@ -43,6 +44,10 @@ class BaseWriter {
 
   getJsTags() {
     return this.getAssetsTags(this.ld.getJsFiles(), 'js').join('\n')
+  }
+
+  getLimedocsGeneratedImgData() {
+    return datauri(path.resolve(__dirname, '../assets/images/Limedocs-generated.png'))
   }
 
   getExtraCss() {
