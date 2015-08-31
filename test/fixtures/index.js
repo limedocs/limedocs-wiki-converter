@@ -1,4 +1,4 @@
-var fixtures = require('require-dir')('../../src/', {recursive : true})
+var fixtures = require('require-dir')('../../dist/', {recursive : true})
 exports.BaseWriter = fixtures['base-writer']
 exports.Finder = fixtures.finder
 exports.Helpers = fixtures.helpers
