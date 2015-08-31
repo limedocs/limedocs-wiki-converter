@@ -26,7 +26,6 @@ class LimedocsWikiConverter {
     }
 
     this.wikiPath = wiki_path
-    this.pages = []
     this.markdownConverter = new GWCMarkdown(this.wikiPath)
 
     this.computePaths()
@@ -74,6 +73,7 @@ class LimedocsWikiConverter {
    * @returns {LimedocsWikiConverter}
    */
   computePages() {
+    this.pages = []
     this.toc.getLinks().forEach(link => {
       if (this.mdAliases[link]) {
         this.pages.push({

@@ -1,6 +1,6 @@
 {
   "name": "limedocs-wiki-converter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generate HTML & PDF documentation from you Github wiki or any other markdown-based wiki",
   "keywords": [
     "wiki",

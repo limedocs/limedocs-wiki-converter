@@ -32,7 +32,6 @@ var LimedocsWikiConverter = (function () {
     }
 
     this.wikiPath = wiki_path;
-    this.pages = [];
     this.markdownConverter = new GWCMarkdown(this.wikiPath);
 
     this.computePaths().computeOptions(options).computeCssFiles().computeJsFiles().checkTocLevel().checkOutputFormat();
@@ -80,6 +79,7 @@ var LimedocsWikiConverter = (function () {
     value: function computePages() {
       var _this = this;
 
+      this.pages = [];
       this.toc.getLinks().forEach(function (link) {
         if (_this.mdAliases[link]) {
           _this.pages.push({
