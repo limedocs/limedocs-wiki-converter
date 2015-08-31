@@ -17,8 +17,7 @@ body {
     height:1px;
     font-size:1px;
     width: 1px;
-    display: inline-block;
-    padding:35px 0 0 0;
+    padding:50px 0 0 0;
     margin: -50px 0 0 0;
 }
 
@@ -98,7 +97,7 @@ img {
 }
 
 .gwc-nav-container {
-    margin-top: 20px;
+    margin-top: 10px;
     position: relative;
 }
 

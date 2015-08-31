@@ -77,7 +77,7 @@ class HtmlWriter extends BaseWriter {
     <div id="documentation-container" class="container">
       <div class="row">
         <div class="col-md-3"><div class="gwc-nav-container"><div class="gwc-nav-inner" id="scroll-spy"><span class="toc"></span>${this.ld.getToc().getHtml()}</div></div></div>
-        <div class="col-md-9">
+        <div class="col-md-9 ld-main">
 `
     return htmlHeader
   }
