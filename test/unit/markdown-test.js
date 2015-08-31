@@ -13,7 +13,7 @@ describe('Markdown', function() {
   describe('.convertMarkdownString', function() {
     it('should return html', function () {
       var html = m.convertMarkdownString('# Foo\n[foo](bar)')
-      html.trim().should.equal('<h1 id="foo">Foo</h1>')
+      html.trim().should.equal('<h1 id="foo">Foo</h1>\n<p><a href="#bar">foo</a></p>')
     })
   })
 
