@@ -21,7 +21,7 @@ class Cli {
       .option("-d, --disable-inline-assets", "Disable inlining of css & js in html document")
 
       .option("--toc <toc-file>", "Wiki TOC file")
-      .option("--toc-level <level>", "Table of contents deep level [default: 3]", 4)
+      .option("--toc-level <level>", "Table of contents deep level [default: 3]", 3)
 
       .option("--highlight-theme <theme>", "Highlighter theme [default: darkula]", 'darkula')
 
