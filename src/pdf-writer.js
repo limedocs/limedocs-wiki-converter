@@ -20,7 +20,7 @@ class PdfWriter extends BaseWriter {
   write() {
 
     var html = this.buildHeader(),
-        pages = this.gwc.getPages(),
+        pages = this.ld.getPages(),
         filename = this.getFilename(),
         self = this
 
@@ -53,7 +53,7 @@ class PdfWriter extends BaseWriter {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${this.gwc.getOption('title')}</title>
+    <title>${this.ld.getOption('title')}</title>
     ${this.getCssTags()}
     <style>${this.getExtraCss()}</style>
     ${this.getJsTags()}
@@ -69,11 +69,11 @@ class PdfWriter extends BaseWriter {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand doc-title">${this.gwc.getOption('title')}</a>
+          <a class="navbar-brand doc-title">${this.ld.getOption('title')}</a>
         </div>
       </div>
     </div>
-    ${this.gwc.getToc().getHtml()}
+    ${this.ld.getToc().getHtml()}
 `
     return htmlHeader
   }
