@@ -27,12 +27,11 @@ class Finder {
           dirOpts = { match: /.md/, exclude: /^_/ }
 
       dir.readFiles(wikiPath, dirOpts, function (err, content, filename, next) {
-          if (err) {
-            return reject(err)
+          if (!err) {
+            mdFiles[filename] = content
+            var base = path.basename(filename)
+            aliases[base.substr(0, base.length - 3)] = filename
           }
-          mdFiles[filename] = content
-          var base = path.basename(filename)
-          aliases[base.substr(0, base.length - 3)] = filename
           next()
         },
         function (err, files) {

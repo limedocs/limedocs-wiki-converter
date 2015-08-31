@@ -26,6 +26,7 @@ class LimedocsWikiConverter {
     }
 
     this.wikiPath = wiki_path
+    this.pages = []
     this.markdownConverter = new GWCMarkdown(this.wikiPath)
 
     this.computePaths()
@@ -68,8 +69,11 @@ class LimedocsWikiConverter {
     }.bind(this))
   }
 
+  /**
+   * @private
+   * @returns {LimedocsWikiConverter}
+   */
   computePages() {
-    this.pages = []
     this.toc.getLinks().forEach(link => {
       if (this.mdAliases[link]) {
         this.pages.push({
@@ -100,6 +104,10 @@ class LimedocsWikiConverter {
     return this.toc
   }
 
+  /**
+   * @private
+   * @returns {LimedocsWikiConverter}
+   */
   computePaths() {
     this.assetsPath = path.resolve(path.join(__dirname, '..', 'assets'))
     this.cssPath = path.join(this.assetsPath, 'css')
@@ -108,6 +116,10 @@ class LimedocsWikiConverter {
     return this
   }
 
+  /**
+   * @private
+   * @returns {LimedocsWikiConverter}
+   */
   computeCssFiles() {
 
     this.cssFiles = [
@@ -121,6 +133,10 @@ class LimedocsWikiConverter {
     return this
   }
 
+  /**
+   * @private
+   * @returns {LimedocsWikiConverter}
+   */
   computeJsFiles() {
 
     this.jsFiles = [

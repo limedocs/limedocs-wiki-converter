@@ -25,14 +25,6 @@ class Cli {
 
       .option("--css <css-file>", "Additional CSS file")
       .option("-v --verbose", "Verbose mode")
-/*
-      .on('--help', function () {
-        console.log('  Examples:')
-        console.log()
-        console.log('    $ ld-convert /path/to/my/wiki')
-        console.log('    $ ld-convert --title "My doc" -output /another/dir /path/to/my/wiki')
-        console.log()
-      })*/
   }
 
   run() {

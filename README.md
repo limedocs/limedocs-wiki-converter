@@ -24,12 +24,12 @@ npm install -g limedocs-wiki-converter
 git clone https://github.com/limedocs/limedocs-wiki-converter.wiki.git
 
 # Convert your wiki
-ld-convert ./imedocs-wiki-converter.wiki
+lwc ./imedocs-wiki-converter.wiki
 ```
 
 ## Usage help
 ```
-  Usage: ld-convert [options] <wiki-dir>
+  Usage: lwc [options] <wiki-dir>
 
   Convert a wiki
 
@@ -55,6 +55,13 @@ ld-convert ./imedocs-wiki-converter.wiki
 
 ### Pages to be included in the documentation
 
+By default, *Limedocs Wiki Converter* will check for the following files to use as a table of contents (TOC):
+
+- `_Toc.md`
+- `_Sidebar.md` (which is the default sidebar file on Github wikis)
+
+When finding a TOC, *lwc* will only generate pages linked from this TOC.
+
 ### Inlining
 
 By default, the HTML output format will generate a single-page HTML document of you wiki, with all assets inlined, such
@@ -66,8 +73,5 @@ generated for each of images, css and javascript files.
 
 ### Table of contents
 
-By default, GWC will check for the following files to use as a table of contents (TOC):
 
-- `_Toc.md`
-- `_Sidebar.md` (which is the default sidebar file on Github wikis)
  

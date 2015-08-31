@@ -32,9 +32,9 @@ describe('LimedocsWikiConverter', function() {
     })
   })
 
-  describe('ld.getMarkdownFiles()', function() {
-    it('should return an array', function () {
-      ld.getMarkdownFiles().should.be.Array()
+  describe('ld.computePages()', function() {
+    it('should compute pages', function () {
+      //ld.computePages().should.be.instanceOf(fixtures.Ld)
     })
   })
 

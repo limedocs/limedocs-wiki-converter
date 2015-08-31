@@ -30,10 +30,11 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --harmony --harmony_arrow_functions --recursive test/unit",
+    "coverage": "node --harmony --harmony_arrow_functions ./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha --report html -- -R spec --recursive test/unit",
     "build": "rm -rf dist/* && ./node_modules/.bin/babel src --out-dir dist --source-maps"
   },
   "bin": {
-    "gwc": "dist/cli/cli.js"
+    "lwc": "dist/cli/lwc.js"
   },
   "author": "Matthias ETIENNE <matthias@etienne.in> (https://github.com/mattallty)",
   "license": "MIT",
@@ -56,6 +57,7 @@
     "babel": "^5.8.21",
     "babel-core": "^5.8.23",
     "eslint": "^1.2.1",
+    "istanbul": "^0.3.19",
     "mocha": "^2.2.5",
     "require-dir": "^0.3.0",
     "should": "^7.0.4"

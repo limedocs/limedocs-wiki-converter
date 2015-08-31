@@ -12,14 +12,6 @@ var Cli = (function () {
     _classCallCheck(this, Cli);
 
     this.program = program.version(LimedocsWikiConverter['package'].version).usage('[options] <wiki-dir>').description('Convert a wiki').option("-f, --format <format>", "Format to convert to. Either html, pdf, or all [default: html]", 'html').option("-o, --output <output-dir>", "Output dir [default: './']", './').option("-t, --title <title>", "Wiki title [default: Documentation]", 'Documentation ').option("-d, --disable-inline-assets", "Disable inlining of css & js in html document").option("--toc <toc-file>", "Wiki TOC file").option("--toc-level <level>", "Table of contents deep level [default: 3]", 4).option("--highlight-theme <theme>", "Highlighter theme [default: darkula]", 'darkula').option("--css <css-file>", "Additional CSS file").option("-v --verbose", "Verbose mode");
-    /*
-          .on('--help', function () {
-            console.log('  Examples:')
-            console.log()
-            console.log('    $ ld-convert /path/to/my/wiki')
-            console.log('    $ ld-convert --title "My doc" -output /another/dir /path/to/my/wiki')
-            console.log()
-          })*/
   }
 
   _createClass(Cli, [{
@@ -60,4 +52,4 @@ if (require.main === module) {
 }
 
 module.exports = Cli;
-//# sourceMappingURL=ld-convert.js.map
+//# sourceMappingURL=lwc.js.map

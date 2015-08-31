@@ -32,6 +32,7 @@ var LimedocsWikiConverter = (function () {
     }
 
     this.wikiPath = wiki_path;
+    this.pages = [];
     this.markdownConverter = new GWCMarkdown(this.wikiPath);
 
     this.computePaths().computeOptions(options).computeCssFiles().computeJsFiles().checkTocLevel().checkOutputFormat();
@@ -69,12 +70,16 @@ var LimedocsWikiConverter = (function () {
         }).bind(this));
       }).bind(this));
     }
+
+    /**
+     * @private
+     * @returns {LimedocsWikiConverter}
+     */
   }, {
     key: "computePages",
     value: function computePages() {
       var _this = this;
 
-      this.pages = [];
       this.toc.getLinks().forEach(function (link) {
         if (_this.mdAliases[link]) {
           _this.pages.push({
@@ -108,6 +113,11 @@ var LimedocsWikiConverter = (function () {
     value: function getToc() {
       return this.toc;
     }
+
+    /**
+     * @private
+     * @returns {LimedocsWikiConverter}
+     */
   }, {
     key: "computePaths",
     value: function computePaths() {
@@ -117,6 +127,11 @@ var LimedocsWikiConverter = (function () {
       this.htmlPath = path.join(this.assetsPath, 'html');
       return this;
     }
+
+    /**
+     * @private
+     * @returns {LimedocsWikiConverter}
+     */
   }, {
     key: "computeCssFiles",
     value: function computeCssFiles() {
@@ -126,6 +141,11 @@ var LimedocsWikiConverter = (function () {
       this.options.userCssFile && this.cssFiles.push(path.resolve(this.options.userCssFile));
       return this;
     }
+
+    /**
+     * @private
+     * @returns {LimedocsWikiConverter}
+     */
   }, {
     key: "computeJsFiles",
     value: function computeJsFiles() {
