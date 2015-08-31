@@ -56,19 +56,21 @@ h1 {
 h2 {
     font-size:18px;
     padding: 8px 10px;
-    background:#EFEFEF;
-    border-bottom: 2px solid #E0E0E0;
+    background: #D8E4B5;
+    border-bottom: 2px solid #92B23B;
+    text-shadow: 1px 1px 0 #EFF7D7;
     border-radius: 3px 3px 0 0;
-    text-shadow: 1px 1px 0 #F7F7F7;
-    color:#5F5F5F;
+    color: #637D1B;
 }
 
 h3 {
-    font-size:18px;
-    font-weight: normal;
+    font-size: 16px;
     padding: 8px 10px;
-    border-bottom: 1px dotted #C0C0C0;
-    color: #333;
+    background:#EFEFEF;
+    border-bottom: 2px solid #E0E0E0;
+    text-shadow: 1px 1px 0 #F7F7F7;
+    border-radius: 3px 3px 0 0;
+    color: #5D5D5D;
 }
 
 
