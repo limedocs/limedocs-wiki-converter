@@ -1,7 +1,7 @@
 "use strict"
 
 var fixtures = require('../fixtures')
-const path = require('path')
+var path = require('path')
 
 require('should')
 

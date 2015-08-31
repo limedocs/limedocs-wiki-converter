@@ -4,7 +4,7 @@ var fixtures = require('../fixtures')
   , Promise = require("bluebird")
   , should = require('should')
 
-const path = require('path')
+var path = require('path')
 
 describe('Helpers', function() {
 
