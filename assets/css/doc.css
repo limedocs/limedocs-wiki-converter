@@ -77,9 +77,10 @@ h3 {
 h4 {
     font-size: 13px;
     padding: 8px 10px;
+    margin-top:16px;
     text-transform: uppercase;
     font-weight: bold;
-    color: #555;
+    color: #6D6D6D;
     border-bottom: 1px dotted #E0E0E0;
 }
 
@@ -88,7 +89,7 @@ h5 {
     font-size: 12px;
     text-transform: uppercase;
     font-weight: bold;
-    color: #555;
+    color: #6D6D6D;
 }
 
 img {
