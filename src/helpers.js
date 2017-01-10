@@ -4,7 +4,7 @@ const path = require('path')
 
 class Helpers {
 
-  static getPageIdFromFilename(filename) {
+  static getPageIdFromFilenameOrLink(filename) {
     var base = path.basename(filename)
     if (base.substr(-3) === '.md') {
       base = base.substr(0, base.length - 3)

@@ -31,8 +31,8 @@ var PdfWriter = (function (_BaseWriter) {
     }
   }, {
     key: "getPageBreaker",
-    value: function getPageBreaker(pageId) {
-      return "<p id=\"" + pageId + "\" style=\"page-break-before: always !important; height: 1px; font-size:1px\">&nbsp;</p>";
+    value: function getPageBreaker(pageTitle, pageId) {
+      return "<h1 id=\"" + pageId + "\" style=\"page-break-before: always !important;\">" + pageTitle + "</h1>";
     }
   }, {
     key: "write",
@@ -47,8 +47,8 @@ var PdfWriter = (function (_BaseWriter) {
       logger.debug('Generating pdf: %d pages to generate', pages.length);
 
       pages.forEach(function (page) {
-        var pageId = helpers.getPageIdFromFilename(page.file);
-        var pdfPage = _this.getPageBreaker(pageId) + page.html;
+        var pageId = helpers.getPageIdFromFilenameOrLink(page.file);
+        var pdfPage = _this.getPageBreaker(page.title, pageId) + page.html;
         html += pdfPage;
       }, this);
 
@@ -65,7 +65,7 @@ var PdfWriter = (function (_BaseWriter) {
     key: "buildHeader",
     value: function buildHeader() {
 
-      var htmlHeader = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>" + this.ld.getOption('title') + "</title>\n    " + this.getCssTags() + "\n    <style>" + this.getExtraCss() + "</style>\n    " + this.getJsTags() + "\n  </head>\n  <body id=\"page-top\" class=\"pdf-doc\">\n    <!-- Fixed navbar -->\n    <div class=\"navbar navbar-default navbar-fixed-top\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand doc-title\">" + this.ld.getOption('title') + "</a>\n        </div>\n      </div>\n    </div>\n    " + this.ld.getToc().getHtml() + "\n";
+      var htmlHeader = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>" + this.ld.getOption('title') + "</title>\n    " + this.getCssTags() + "\n    <style>" + this.getExtraCss() + "</style>\n    " + this.getJsTags() + "\n  </head>\n  <body id=\"page-top\" class=\"pdf-doc\">\n    <!-- Fixed navbar -->\n    <div class=\"navbar navbar-default\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand doc-title\">" + this.ld.getOption('title') + "</a>\n        </div>\n      </div>\n    </div>\n    " + this.ld.getToc().getHtml() + "\n";
       return htmlHeader;
     }
   }, {
