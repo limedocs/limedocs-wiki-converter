@@ -9,6 +9,7 @@ var Promise = require("bluebird")
   , GWCPdfWriter = require('./pdf-writer')
   , GWCToc = require('./toc')
   , GWCFinder = require('./finder')
+  , helpers = require('./helpers')
   , logger = require('./logger')
 
 class LimedocsWikiConverter {
@@ -74,9 +75,11 @@ class LimedocsWikiConverter {
    */
   computePages() {
     this.pages = []
-    this.toc.getLinks().forEach(link => {
+    this.toc.getItems().forEach(item => {
+      let link = helpers.getPageIdFromFilenameOrLink(item.link)
       if (this.mdAliases[link]) {
         this.pages.push({
+          title: item.title,
           file: this.mdAliases[link],
           html: this.markdownConverter.convertMarkdownFile(this.mdAliases[link])
         })

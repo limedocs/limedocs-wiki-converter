@@ -13,8 +13,8 @@ class PdfWriter extends BaseWriter {
     return 'pdf'
   }
 
-  getPageBreaker(pageId) {
-    return `<p id="${pageId}" style="page-break-before: always !important; height: 1px; font-size:1px">&nbsp;</p>`
+  getPageBreaker(pageTitle, pageId) {
+    return `<h1 id="${pageId}" style="page-break-before: always !important;">${pageTitle}</h1>`
   }
 
   write() {
@@ -27,8 +27,8 @@ class PdfWriter extends BaseWriter {
     logger.debug('Generating pdf: %d pages to generate', pages.length)
 
     pages.forEach(page => {
-      var pageId = helpers.getPageIdFromFilename(page.file)
-      var pdfPage = this.getPageBreaker(pageId) + page.html
+      var pageId = helpers.getPageIdFromFilenameOrLink(page.file)
+      var pdfPage = this.getPageBreaker(page.title, pageId) + page.html
       html += pdfPage
     }, this)
 
@@ -60,7 +60,7 @@ class PdfWriter extends BaseWriter {
   </head>
   <body id="page-top" class="pdf-doc">
     <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

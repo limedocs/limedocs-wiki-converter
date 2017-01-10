@@ -12,8 +12,8 @@ var Helpers = (function () {
   }
 
   _createClass(Helpers, null, [{
-    key: 'getPageIdFromFilename',
-    value: function getPageIdFromFilename(filename) {
+    key: 'getPageIdFromFilenameOrLink',
+    value: function getPageIdFromFilenameOrLink(filename) {
       var base = path.basename(filename);
       if (base.substr(-3) === '.md') {
         base = base.substr(0, base.length - 3);
