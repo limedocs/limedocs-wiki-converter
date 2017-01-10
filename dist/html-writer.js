@@ -35,7 +35,7 @@ var HtmlWriter = (function (_BaseWriter) {
       logger.debug('Generating html: %d pages to generate', pages.length);
 
       this.ld.getPages().forEach(function (page) {
-        var pageId = helpers.getPageIdFromFilename(page.file);
+        var pageId = helpers.getPageIdFromFilenameOrLink(page.file);
         html += "<p class=\"page\" id=\"" + pageId + "\"></p>\n" + page.html;
       }, this);
 

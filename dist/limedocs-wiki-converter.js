@@ -13,6 +13,7 @@ var Promise = require("bluebird"),
     GWCPdfWriter = require('./pdf-writer'),
     GWCToc = require('./toc'),
     GWCFinder = require('./finder'),
+    helpers = require('./helpers'),
     logger = require('./logger');
 
 var LimedocsWikiConverter = (function () {
@@ -80,11 +81,11 @@ var LimedocsWikiConverter = (function () {
       var _this = this;
 
       this.pages = [];
-      this.toc.getLinks().forEach(function (link) {
-        var linkSplits = link.split(new RegExp('[\\|/]'));
-        link = linkSplits.length > 0 ? linkSplits[linkSplits.length - 1] : linkSplits[0];
+      this.toc.getItems().forEach(function (item) {
+        var link = helpers.getPageIdFromFilenameOrLink(item.link);
         if (_this.mdAliases[link]) {
           _this.pages.push({
+            title: item.title,
             file: _this.mdAliases[link],
             html: _this.markdownConverter.convertMarkdownFile(_this.mdAliases[link])
           });
