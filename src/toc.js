@@ -11,31 +11,33 @@ class Toc {
    *
    * @param {GWC} gwc
    */
-  constructor(ld) {
-    this.ld = ld
+  constructor(converter) {
+    this.converter = converter
     this.computeTocParts()
   }
 
   getMarkdown() {
-    return this.tocMd
+    return this.toc.tocMd
   }
 
   getHtml() {
-    return this.tocHtml
+    return this.toc.tocHtml
   }
 
-  getLinks() {
-    return this.tocLinks
+  getItems() {
+    return this.toc.tocItems
   }
-
 
   /**
    * @private
    */
   computeTocParts() {
-    this.tocMd = this.getTocFileContents()
-    this.tocHtml = this.ld.getMarkdownConverter().convertTocMarkdownString(this.tocMd)
-    this.tocLinks = this.extractLinks()
+    this.toc = {}
+    this.toc.tocMd = this.getTocFileContents()
+
+    let convertedToc = this.converter.getMarkdownConverter().convertTocMarkdownString(this.toc.tocMd)
+    this.toc.tocHtml = convertedToc.tocHtml
+    this.toc.tocItems = convertedToc.tocItems
   }
 
   /**
@@ -43,7 +45,7 @@ class Toc {
    * @returns {String}
    */
   getTocFileContents() {
-    var tocFile = this.ld.getTocFile()
+    var tocFile = this.converter.getTocFile()
     if (tocFile) {
       return fs.readFileSync(tocFile, {encoding: 'utf8'})
     }
@@ -56,29 +58,11 @@ class Toc {
    * @returns {string}
    */
   genTocFileContents() {
-    return Object.keys(this.ld.getMarkdownFiles()).map(filename => {
+    return Object.keys(this.converter.getMarkdownFiles()).map(filename => {
       var basename = path.basename(filename)
       return util.format('- [%s](%s)', basename, basename)
     }).join('\n')
   }
-
-  /**
-   * @private
-   * @returns {Array}
-   */
-  extractLinks() {
-    var html = marked.parser(marked.lexer(this.tocMd))
-    var links = []
-
-    html.replace(/<a href="([^"]+)"/g, function(all_pattern, link) {
-      if (link.substr(link.length - 3) === '.md') {
-        link = link.substr(0, link.length - 3)
-      }
-      links.push(link)
-    })
-    return links
-  }
-
 }
 
 module.exports = Toc

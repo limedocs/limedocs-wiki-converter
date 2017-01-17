@@ -9,7 +9,7 @@ var marked = require('marked'),
     fs = require('fs'),
     path = require('path'),
     util = require('util'),
-    datauri = require('datauri'),
+    datauri = require('datauri').sync,
     helpers = require('./helpers');
 
 var Markdown = (function () {
@@ -17,6 +17,7 @@ var Markdown = (function () {
     _classCallCheck(this, Markdown);
 
     this.wikiPath = wikiPath;
+    this.tocItems = [];
     this.firstTocLiClassProcessed = false;
     this.setupMainRenderer().setupTocRenderer();
   }
@@ -34,8 +35,8 @@ var Markdown = (function () {
       };
 
       this.mainRenderer.link = function (href, title, text) {
-        if (!href.match(/^https?:\/\//)) {
-          href = '#' + helpers.getPageIdFromFilename(href);
+        if (!href.match(/^https?:\/\//) || self.isTocLink(href)) {
+          href = '#' + helpers.getPageIdFromFilenameOrLink(href);
         }
         return '<a href="' + href + '">' + text + '</a>';
       };
@@ -43,8 +44,10 @@ var Markdown = (function () {
       this.mainRenderer.image = function (href, title, text) {
         if (!href.match(/^https?:\/\//)) {
           href = path.resolve(self.wikiPath, href);
+          return util.format('<img src="%s" />', datauri(href));
+        } else {
+          return util.format('<img src="%s" />', href);
         }
-        return util.format('<img src="%s" />', datauri(href));
       };
       return this;
     }
@@ -57,7 +60,7 @@ var Markdown = (function () {
 
       this.tocRenderer.list = function (body, ordered) {
         var tag = ordered ? 'ol' : 'ul';
-        return '<' + tag + ' class="nav gwc-nav">' + body + '</' + tag + '>';
+        return '<' + tag + ' class="nav">' + body + '</' + tag + '>';
       };
 
       this.tocRenderer.listitem = function (text) {
@@ -76,7 +79,11 @@ var Markdown = (function () {
       };
 
       this.tocRenderer.link = function (href, title, text) {
-        href = helpers.getPageIdFromFilename(href);
+        self.tocItems.push({
+          title: text,
+          link: href
+        });
+        href = helpers.getPageIdFromFilenameOrLink(href);
         return '<a href="#' + href + '">' + text + '</a>';
       };
 
@@ -85,18 +92,62 @@ var Markdown = (function () {
   }, {
     key: 'convertTocMarkdownString',
     value: function convertTocMarkdownString(markdown) {
-      return this.convertMarkdownString(markdown, this.tocRenderer);
+      return {
+        tocHtml: this.convertMarkdownString(markdown, this.tocRenderer),
+        tocItems: this.tocItems
+      };
     }
   }, {
     key: 'convertMarkdownString',
     value: function convertMarkdownString(markdown, renderer) {
       renderer = renderer || this.mainRenderer;
-      return marked(markdown, { renderer: renderer });
+      return marked(markdown, {
+        renderer: renderer
+      });
     }
   }, {
     key: 'convertMarkdownFile',
     value: function convertMarkdownFile(markdown_file) {
-      return this.convertMarkdownString(fs.readFileSync(markdown_file, { encoding: 'utf8' }));
+      return this.convertMarkdownString(fs.readFileSync(markdown_file, {
+        encoding: 'utf8'
+      }));
+    }
+
+    /**
+     * @private
+     * @returns {Boolean}
+     */
+  }, {
+    key: 'isTocLink',
+    value: function isTocLink(link) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.tocItems[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var item = _step.value;
+
+          if (item.link == link) {
+            return true;
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator['return']) {
+            _iterator['return']();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return false;
     }
   }]);
 

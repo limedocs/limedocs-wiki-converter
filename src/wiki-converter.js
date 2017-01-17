@@ -9,9 +9,10 @@ var Promise = require("bluebird")
   , GWCPdfWriter = require('./pdf-writer')
   , GWCToc = require('./toc')
   , GWCFinder = require('./finder')
+  , helpers = require('./helpers')
   , logger = require('./logger')
 
-class LimedocsWikiConverter {
+class WikiConverter {
   /**
    * GWC Constructor
    *
@@ -70,13 +71,15 @@ class LimedocsWikiConverter {
 
   /**
    * @private
-   * @returns {LimedocsWikiConverter}
+   * @returns {wiki-converter}
    */
   computePages() {
     this.pages = []
-    this.toc.getLinks().forEach(link => {
+    this.toc.getItems().forEach(item => {
+      let link = helpers.getPageIdFromFilenameOrLink(item.link)
       if (this.mdAliases[link]) {
         this.pages.push({
+          title: item.title,
           file: this.mdAliases[link],
           html: this.markdownConverter.convertMarkdownFile(this.mdAliases[link])
         })
@@ -106,7 +109,7 @@ class LimedocsWikiConverter {
 
   /**
    * @private
-   * @returns {LimedocsWikiConverter}
+   * @returns {wiki-converter}
    */
   computePaths() {
     this.assetsPath = path.resolve(path.join(__dirname, '..', 'assets'))
@@ -118,7 +121,7 @@ class LimedocsWikiConverter {
 
   /**
    * @private
-   * @returns {LimedocsWikiConverter}
+   * @returns {wiki-converter}
    */
   computeCssFiles() {
 
@@ -135,7 +138,7 @@ class LimedocsWikiConverter {
 
   /**
    * @private
-   * @returns {LimedocsWikiConverter}
+   * @returns {wiki-converter}
    */
   computeJsFiles() {
 
@@ -168,7 +171,7 @@ class LimedocsWikiConverter {
       output : path.resolve('./'),
       tocFile : GWCFinder.searchForFile(['_Toc.html', '_Sidebar.html', '_Toc.md', '_Sidebar.md'], this.wikiPath),
       tocLevel : 3, // between 1 and 4
-      highlightTheme : 'darkula',
+      highlightTheme : 'github',
       userCssFile : null
     }
 
@@ -231,8 +234,8 @@ class LimedocsWikiConverter {
   }
 }
 
-Object.defineProperty(LimedocsWikiConverter, 'package', {
+Object.defineProperty(WikiConverter, 'package', {
   value : require('../package')
 })
 
-module.exports = LimedocsWikiConverter
+module.exports = WikiConverter

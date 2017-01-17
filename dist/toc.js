@@ -16,27 +16,27 @@ var Toc = (function () {
    * @param {GWC} gwc
    */
 
-  function Toc(ld) {
+  function Toc(converter) {
     _classCallCheck(this, Toc);
 
-    this.ld = ld;
+    this.converter = converter;
     this.computeTocParts();
   }
 
   _createClass(Toc, [{
     key: 'getMarkdown',
     value: function getMarkdown() {
-      return this.tocMd;
+      return this.toc.tocMd;
     }
   }, {
     key: 'getHtml',
     value: function getHtml() {
-      return this.tocHtml;
+      return this.toc.tocHtml;
     }
   }, {
-    key: 'getLinks',
-    value: function getLinks() {
-      return this.tocLinks;
+    key: 'getItems',
+    value: function getItems() {
+      return this.toc.tocItems;
     }
 
     /**
@@ -45,9 +45,12 @@ var Toc = (function () {
   }, {
     key: 'computeTocParts',
     value: function computeTocParts() {
-      this.tocMd = this.getTocFileContents();
-      this.tocHtml = this.ld.getMarkdownConverter().convertTocMarkdownString(this.tocMd);
-      this.tocLinks = this.extractLinks();
+      this.toc = {};
+      this.toc.tocMd = this.getTocFileContents();
+
+      var convertedToc = this.converter.getMarkdownConverter().convertTocMarkdownString(this.toc.tocMd);
+      this.toc.tocHtml = convertedToc.tocHtml;
+      this.toc.tocItems = convertedToc.tocItems;
     }
 
     /**
@@ -57,7 +60,7 @@ var Toc = (function () {
   }, {
     key: 'getTocFileContents',
     value: function getTocFileContents() {
-      var tocFile = this.ld.getTocFile();
+      var tocFile = this.converter.getTocFile();
       if (tocFile) {
         return fs.readFileSync(tocFile, { encoding: 'utf8' });
       }
@@ -72,29 +75,10 @@ var Toc = (function () {
   }, {
     key: 'genTocFileContents',
     value: function genTocFileContents() {
-      return Object.keys(this.ld.getMarkdownFiles()).map(function (filename) {
+      return Object.keys(this.converter.getMarkdownFiles()).map(function (filename) {
         var basename = path.basename(filename);
         return util.format('- [%s](%s)', basename, basename);
       }).join('\n');
-    }
-
-    /**
-     * @private
-     * @returns {Array}
-     */
-  }, {
-    key: 'extractLinks',
-    value: function extractLinks() {
-      var html = marked.parser(marked.lexer(this.tocMd));
-      var links = [];
-
-      html.replace(/<a href="([^"]+)"/g, function (all_pattern, link) {
-        if (link.substr(link.length - 3) === '.md') {
-          link = link.substr(0, link.length - 3);
-        }
-        links.push(link);
-      });
-      return links;
     }
   }]);
 
