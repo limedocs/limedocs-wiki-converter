@@ -1,6 +1,6 @@
 # Github Wikito Converter
 
-Github Wikito Converter allows you to generate HTML & PDF documentation from your Github wiki or any other markdown-based wiki.
+Github Wikito Converter allows you to generate HTML & PDF documentation from your Github wiki or any other markdown-based wiki. It is build on top of [Limedocs Wiki Converter](https://github.com/limedocs/limedocs-wiki-converter) and contains new features and bug fixes, check the release notes to see them.
 
 # Prerequesites
 
