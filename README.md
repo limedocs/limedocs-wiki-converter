@@ -103,7 +103,7 @@ Interceptors are a powerful mechanism that can monitor, rewrite, and retry calls
 ![Interceptors Diagram](https://raw.githubusercontent.com/wiki/square/okhttp/interceptors@2x.png)
 ```
 
-![](assets/img/page-break-1.png)
+![](https://raw.githubusercontent.com/yakivmospan/github-wikito-converter/develop/assets/img/page-break-1.png)
 
 After :
 
@@ -116,7 +116,7 @@ Interceptors are a powerful mechanism that can monitor, rewrite, and retry calls
 ![Interceptors Diagram](https://raw.githubusercontent.com/wiki/square/okhttp/interceptors@2x.png)
 ```
 
-![](assets/img/page-break-2.png)
+![](https://raw.githubusercontent.com/yakivmospan/github-wikito-converter/develop/assets/img/page-break-2.png)
 
 # Code highlighting
 
