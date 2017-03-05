@@ -20,6 +20,11 @@ class Cli {
       .option("-t, --title <title>", "Wiki title [default: Documentation]", 'Documentation ')
       .option("-d, --disable-inline-assets", "Disable inlining of css & js in html document")
 
+      .option("--logo-img <logo-file>", "Logo image file")
+      .option("--footer <footer>" , "Wiki footer")
+
+      .option("--pdf-page-count", "Enable PDF page count")
+
       .option("--toc <toc-file>", "Wiki TOC file")
       .option("--toc-level <level>", "Table of contents deep level [default: 3]", 3)
 
@@ -39,6 +44,9 @@ class Cli {
       format: this.program.format,
       output: this.program.output,
       title: this.program.title,
+      logoImage: this.program.logoImg,
+      footer: this.program.footer,
+      pdfPageCount: this.program.pdfPageCount,
       tocFile: this.program.toc,
       tocLevel: this.program.tocLevel,
       highlightTheme: this.program.highlightTheme,
