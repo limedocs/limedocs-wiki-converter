@@ -61,7 +61,7 @@ class HtmlWriter extends BaseWriter {
       <div class="row">
         <div class="col-md-3">
           <div class="nav-container">
-            <div class="nav-inner" id="scroll-spy">
+            <div class="nav-inner" id="scroll-spy" style="overflow-y: auto; height: 90%;">
               <span class="toc"></span>
               ${this.converter.getToc().getHtml()}
               ${this.getFooter()}
