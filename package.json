@@ -56,7 +56,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.34",
-    "bootstrap": "^3.3.5",
+    "bootstrap": "^3.3.7",
     "commander": "^2.8.1",
     "datauri": "^1.0.5",
     "defaults": "^1.0.2",
