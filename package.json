@@ -61,7 +61,7 @@
     "datauri": "^1.0.5",
     "defaults": "^1.0.2",
     "fs-extra": "^0.23.1",
-    "highlight.js": "^8.7.0",
+    "highlight.js": "^9.12.0",
     "jquery": "^2.1.4",
     "marked": "^0.3.6",
     "node-dir": "^0.1.9",
