@@ -30,8 +30,12 @@ var Markdown = (function () {
       this.mainRenderer = new marked.Renderer();
 
       this.mainRenderer.code = function (code, lang) {
-        code = lang === undefined ? highlight.highlightAuto(code) : highlight.highlight(lang, code);
-        return '<pre class="hljs">' + code.value + '</pre>';
+        if (lang && ['plantuml', 'puml'].includes(lang)) {
+          return '<img alt="plantuml-diagram" src="' + helpers.getPlantEncoded(code) + '"/>';
+        } else {
+          code = lang === undefined ? highlight.highlightAuto(code) : highlight.highlight(lang, code);
+          return '<pre class="hljs">' + code.value + '</pre>';
+        }
       };
 
       this.mainRenderer.link = function (href, title, text) {
